@@ -1,0 +1,123 @@
+body{
+  background: black;
+  color: white;
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  --link-hover: #f1f5f9;
+  --link-active: #6366f1;
+  --input-bg: #ffffff;
+  --input-border: #e2e8f0;
+  --btn-primary: #6366f1;
+  --btn-primary-hover: #4f46e5;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+}
+
+.dark-theme {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --link-hover: #334155;
+  --link-active: #818cf8;
+  --input-bg: #1e293b;
+  --input-border: #334155;
+  --btn-primary: #818cf8;
+  --btn-primary-hover: #6366f1;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+#root {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+.card, .dashboard-card, .stat-card, .task-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+
+input, select, textarea {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-primary);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+input::placeholder {
+  color: var(--text-secondary);
+}
+
+
+button {
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--btn-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--btn-primary-hover);
+}
+
+
+a {
+  color: var(--link-active);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--btn-primary-hover);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+p, span, div, section {
+  color: var(--text-primary);
+}

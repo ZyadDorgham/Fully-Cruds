@@ -1,0 +1,112 @@
+.delete-modal .modal {
+  max-width: 420px;
+  text-align: center;
+}
+
+.delete-header h2 {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.delete-body {
+  padding: 8px 0 12px;
+}
+
+.delete-icon {
+  font-size: 3.2rem;
+  margin-bottom: 8px;
+}
+
+.delete-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 8px 0 4px;
+}
+
+.delete-subtext {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.delete-footer {
+  justify-content: center;
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: #fff;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.3);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(220, 38, 38, 0.4);
+}
+
+/* ===== تحسين الـ Responsiveness ===== */
+@media (max-width: 600px) {
+  .delete-modal .modal {
+    max-width: 90%;
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .delete-icon {
+    font-size: 2.8rem;
+  }
+
+  .delete-text {
+    font-size: 1.05rem;
+  }
+
+  .delete-subtext {
+    font-size: 0.85rem;
+  }
+
+  .btn-delete,
+  .btn-cancel {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .delete-footer {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .delete-modal .modal {
+    padding: 20px 16px;
+  }
+
+  .delete-icon {
+    font-size: 2.2rem;
+  }
+
+  .delete-text {
+    font-size: 0.95rem;
+  }
+
+  .delete-subtext {
+    font-size: 0.8rem;
+  }
+
+  .btn-delete,
+  .btn-cancel {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+}
