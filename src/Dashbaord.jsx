@@ -38,15 +38,11 @@ export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const filteredArr = useFilteredTasks(arr, currentFilter, searchTerm);
 
-  
-  
-
   const total = arr.length;
   const completed = arr.filter(t => t.Completed).length;
   const pending = arr.filter(t => !t.Completed).length;
   const highPriority = arr.filter(t => t.priority === '🔴 High').length;
   const completionRate = total === 0 ? 0 : Math.round((completed / total) * 100);
-
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -70,7 +66,6 @@ export default function Dashboard() {
       return due >= today && due <= nextWeek;
     });
   }, [arr]);
-
 
   const priorityDist = useMemo(() => {
     const high = arr.filter(t => t.priority === '🔴 High').length;
@@ -143,7 +138,6 @@ export default function Dashboard() {
           </button>
         </section>
 
-
         <section className="stats-grid">
           <div className="stat-card total">
             <span className="stat-icon">📌</span>
@@ -174,7 +168,6 @@ export default function Dashboard() {
             </div>
           </div>
         </section>
-
 
         <section className="dashboard-row">
 

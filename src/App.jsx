@@ -1,28 +1,55 @@
-
-import './App.css'
-import Navbar from './Navbar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
+import PrivateRoute from './PrivateRoute';
+import Login from './Login';
+import Navbar from './Navbar';
+import Tasks from './Tasks';
+import About from './About'; 
+import Dashboard from './Dashbaord';
 import Home from './Home'
-import {Routes,Route} from 'react-router-dom'
-import About from './About'
-import Tasks from './Tasks'
-import Dashboard from './Dashbaord'
-export default function App() {
-
-  
+function App() {
   return (
-    <>
+    <AuthProvider>
 
-<Navbar/>
+        <Navbar />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Home/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/Dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <PrivateRoute>
+                <Tasks />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <PrivateRoute>
+                <About />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
 
-
-<Routes>
-  <Route path='/' element={<Home/>}/>
-   <Route path='/About' element={<About/>}/>
-   <Route path='/Tasks' element={<Tasks/>}/>
-  <Route path='/Dashboard' element={<Dashboard/>}/>
-</Routes>
-    </>
-  )
+    </AuthProvider>
+  );
 }
 
-
+export default App;

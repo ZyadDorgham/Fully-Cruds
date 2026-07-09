@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect,useMemo } from "react";
 
 const priorityMap = {
   "High": "🔴 High",
@@ -189,14 +189,17 @@ export function useTasks() {
     setselectid(null);
   }
 
-  function SortByName() {
+ const Sorting =  useMemo(()=>{
+    return function SortByName() {
     let sort = [...arr].sort((start, end) => {
       return start.title.localeCompare(end.title);
     });
     setarr(sort);
   }
-
-  function SortByDate() {
+  },[arr])
+  
+  const SortDate = useMemo(()=>{
+    return function SortByDate() {
     const sorted = [...arr].sort((a, b) => {
       const dateA = new Date(a.Due.replace("📅 Due: ", ""));
       const dateB = new Date(b.Due.replace("📅 Due: ", ""));
@@ -204,14 +207,17 @@ export function useTasks() {
     });
     setarr(sorted);
   }
+  },[arr])
 
-  function SortByPriority() {
+  const SortPiriority  =useMemo(()=>{
+    return function SortByPriority() {
     const priorityOrder = { "🔴 High": 3, "🟡 Medium": 2, "🟢 Low": 1 };
     const sorted = [...arr].sort((a, b) => {
       return priorityOrder[b.priority] - priorityOrder[a.priority];
     });
     setarr(sorted);
   }
+  },[arr])
 
   function ToggleComplete(id) {
     let map = arr.map((e) => {
@@ -225,12 +231,20 @@ export function useTasks() {
   }
 
   const TotalProduct = arr.length;
-  const Completed = arr.reduce((start, end) => {
+
+  const Complete = useMemo(()=>{
+    return  arr.reduce((start, end) => {
     if (end.Completed) start++;
     return start;
   }, 0);
-  const Status = arr.filter(item => item.status === '⏳ Pending').length;
-  const HighPriority = arr.filter(item => item.priority === '🔴 High').length;
+  },[arr])
+
+  const Status = useMemo(()=>{
+    return arr.filter(item => item.status === '⏳ Pending').length;
+  },[arr])
+  const HighPriority = useMemo(()=>{
+    return arr.filter(item => item.priority === '🔴 High').length;
+  },[arr])
 
   return {
     arr,
@@ -241,7 +255,7 @@ export function useTasks() {
     selectid,
     Edit,
     TotalProduct,
-    Completed,
+    Complete,
     Status,
     HighPriority,
     HandleInput,
@@ -255,9 +269,9 @@ export function useTasks() {
     OpenEdit,
     CloseEditModal,
     SaveEdit,
-    SortByName,
-    SortByDate,
-    SortByPriority,
+    Sorting,
+    SortDate,
+    SortPiriority,
     ToggleComplete
   };
 }
